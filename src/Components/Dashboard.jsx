@@ -10,11 +10,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Fetch admin name from verify endpoint
-    axios.get("http://localhost:3000/verify")
+    axios
+      .get("https://employee-server-production-12e0.up.railway.app/verify")
       .then((result) => {
         if (result.data.Status) {
           // Fetch admin details using id
-          axios.get(`http://localhost:3000/auth/admin_details/${result.data.id}`)
+          axios
+            .get(
+              `https://employee-server-production-12e0.up.railway.app/auth/admin_details/${result.data.id}`,
+            )
             .then((res) => {
               if (res.data.Status) {
                 setAdminName(res.data.Result.name);
@@ -27,12 +31,14 @@ const Dashboard = () => {
   }, []);
 
   const handleLogout = () => {
-    axios.get("http://localhost:3000/auth/logout").then((result) => {
-      if (result.data.Status) {
-        localStorage.removeItem("valid");
-        navigate("/");
-      }
-    });
+    axios
+      .get("https://employee-server-production-12e0.up.railway.app/auth/logout")
+      .then((result) => {
+        if (result.data.Status) {
+          localStorage.removeItem("valid");
+          navigate("/");
+        }
+      });
   };
 
   return (

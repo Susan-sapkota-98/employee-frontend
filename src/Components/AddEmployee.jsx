@@ -17,7 +17,9 @@ const AddEmployee = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/auth/category")
+      .get(
+        "https://employee-server-production-12e0.up.railway.app/auth/category",
+      )
       .then((result) => {
         if (result.data.Status) {
           setCategory(result.data.Result);
@@ -47,7 +49,10 @@ const AddEmployee = () => {
     formData.append("category_id", employee.category_id);
 
     axios
-      .post("http://localhost:3000/auth/add_employee", formData)
+      .post(
+        "https://employee-server-production-12e0.up.railway.app/auth/add_employee",
+        formData,
+      )
       .then((result) => {
         if (result.data.Status) {
           navigate("/dashboard/employee");
