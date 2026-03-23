@@ -9,7 +9,7 @@ const EmployeeDetail = () => {
 
   useEffect(() => {
     axios
-      .get("${import.meta.env.VITE_API_URL}/employee/detail/" + id)
+      .get(`${import.meta.env.VITE_API_URL}/employee/detail/` + id)
       .then((result) => {
         setEmployee(result.data[0]);
       })
@@ -18,7 +18,7 @@ const EmployeeDetail = () => {
 
   const handleLogout = () => {
     axios
-      .get("${import.meta.env.VITE_API_URL}/employee/logout")
+      .get(`${import.meta.env.VITE_API_URL}/employee/logout`)
       .then((result) => {
         if (result.data.Status) {
           localStorage.removeItem("valid");

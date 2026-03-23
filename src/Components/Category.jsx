@@ -7,7 +7,7 @@ const Category = () => {
 
   useEffect(() => {
     axios
-      .get("${import.meta.env.VITE_API_URL}/auth/category")
+      .get(`${import.meta.env.VITE_API_URL}/auth/category`)
       .then((result) => {
         if (result.data.Status) {
           setCategory(result.data.Result);

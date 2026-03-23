@@ -11,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     // Fetch admin name from verify endpoint
     axios
-      .get("${import.meta.env.VITE_API_URL}/verify")
+      .get(`${import.meta.env.VITE_API_URL}/verify`)
       .then((result) => {
         if (result.data.Status) {
           // Fetch admin details using id
@@ -31,7 +31,7 @@ const Dashboard = () => {
   }, []);
 
   const handleLogout = () => {
-    axios.get("${import.meta.env.VITE_API_URL}/auth/logout").then((result) => {
+    axios.get(`${import.meta.env.VITE_API_URL}/auth/logout`).then((result) => {
       if (result.data.Status) {
         localStorage.removeItem("valid");
         navigate("/");
