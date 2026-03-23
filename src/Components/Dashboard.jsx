@@ -11,13 +11,13 @@ const Dashboard = () => {
   useEffect(() => {
     // Fetch admin name from verify endpoint
     axios
-      .get("https://employee-server-production-12e0.up.railway.app/verify")
+      .get("${import.meta.env.VITE_API_URL}/verify")
       .then((result) => {
         if (result.data.Status) {
           // Fetch admin details using id
           axios
             .get(
-              `https://employee-server-production-12e0.up.railway.app/auth/admin_details/${result.data.id}`,
+              `${import.meta.env.VITE_API_URL}/auth/admin_details/${result.data.id}`,
             )
             .then((res) => {
               if (res.data.Status) {
@@ -31,14 +31,12 @@ const Dashboard = () => {
   }, []);
 
   const handleLogout = () => {
-    axios
-      .get("https://employee-server-production-12e0.up.railway.app/auth/logout")
-      .then((result) => {
-        if (result.data.Status) {
-          localStorage.removeItem("valid");
-          navigate("/");
-        }
-      });
+    axios.get("${import.meta.env.VITE_API_URL}/auth/logout").then((result) => {
+      if (result.data.Status) {
+        localStorage.removeItem("valid");
+        navigate("/");
+      }
+    });
   };
 
   return (

@@ -17,9 +17,7 @@ const AddEmployee = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://employee-server-production-12e0.up.railway.app/auth/category",
-      )
+      .get("${import.meta.env.VITE_API_URL}/auth/category")
       .then((result) => {
         if (result.data.Status) {
           setCategory(result.data.Result);
@@ -49,10 +47,7 @@ const AddEmployee = () => {
     formData.append("category_id", employee.category_id);
 
     axios
-      .post(
-        "https://employee-server-production-12e0.up.railway.app/auth/add_employee",
-        formData,
-      )
+      .post("${import.meta.env.VITE_API_URL}/auth/add_employee", formData)
       .then((result) => {
         if (result.data.Status) {
           navigate("/dashboard/employee");

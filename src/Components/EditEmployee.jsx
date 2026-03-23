@@ -16,9 +16,7 @@ const EditEmployee = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://employee-server-production-12e0.up.railway.app/auth/category",
-      )
+      .get("${import.meta.env.VITE_API_URL}/auth/category")
       .then((result) => {
         if (result.data.Status) {
           setCategory(result.data.Result);
@@ -29,10 +27,7 @@ const EditEmployee = () => {
       .catch((err) => console.log(err));
 
     axios
-      .get(
-        "https://employee-server-production-12e0.up.railway.app/auth/employee/" +
-          id,
-      )
+      .get("${import.meta.env.VITE_API_URL}/auth/employee/" + id)
       .then((result) => {
         setEmployee({
           ...employee,
@@ -49,11 +44,7 @@ const EditEmployee = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(
-        "https://employee-server-production-12e0.up.railway.app/auth/edit_employee/" +
-          id,
-        employee,
-      )
+      .put("${import.meta.env.VITE_API_URL}/auth/edit_employee/" + id, employee)
       .then((result) => {
         if (result.data.Status) {
           navigate("/dashboard/employee");

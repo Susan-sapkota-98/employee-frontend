@@ -6,9 +6,7 @@ const AuditLog = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://employee-server-production-12e0.up.railway.app/auth/audit_log",
-      )
+      .get("${import.meta.env.VITE_API_URL}/auth/audit_log")
       .then((result) => {
         if (result.data.Status) {
           setLogs(result.data.Result);

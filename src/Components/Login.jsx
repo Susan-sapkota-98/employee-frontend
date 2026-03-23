@@ -14,10 +14,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post(
-        "https://employee-server-production-12e0.up.railway.app/auth/adminlogin",
-        values,
-      )
+      .post("${import.meta.env.VITE_API_URL}/auth/adminlogin", values)
       .then((result) => {
         if (result.data.loginStatus) {
           localStorage.setItem("valid", true);

@@ -8,9 +8,7 @@ const Employee = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://employee-server-production-12e0.up.railway.app/auth/employee",
-      )
+      .get("${import.meta.env.VITE_API_URL}/auth/employee")
       .then((result) => {
         if (result.data.Status) {
           setEmployee(result.data.Result);
@@ -23,10 +21,7 @@ const Employee = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(
-        "https://employee-server-production-12e0.up.railway.app/auth/delete_employee/" +
-          id,
-      )
+      .delete("${import.meta.env.VITE_API_URL}/auth/delete_employee/" + id)
       .then((result) => {
         if (result.data.Status) {
           window.location.reload();

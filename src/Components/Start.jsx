@@ -8,7 +8,7 @@ const Start = () => {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("https://employee-server-production-12e0.up.railway.app/verify")
+      .get("${import.meta.env.VITE_API_URL}/verify")
       .then((result) => {
         if (result.data.Status) {
           if (result.data.role === "admin") {
